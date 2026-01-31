@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marketing AI Suite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>📢 Marketing & Sales AI Suite</h1>
+
+    <!-- Input Form -->
+    <form action="/generate" method="post">
+        <input type="text" name="product" placeholder="Enter Product Name" required>
+        <input type="text" name="audience" placeholder="Target Audience" required>
+        <button type="submit">Generate Marketing Content</button>
+    </form>
+
+    <!-- Output Section -->
+    {% if product %}
+    <div class="output">
+        <h2>Generated Marketing Content for "{{ product }}"</h2>
+
+        <h3>📄 Product Description</h3>
+        <p>{{ description }}</p>
+
+        <h3>📣 Ad Copies</h3>
+        <ul>
+            {% for ad in ads %}
+                <li>{{ ad }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>🎬 Sample Video Content Ideas</h3>
+        <ul>
+            {% for video in videos %}
+                <li>{{ video }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
